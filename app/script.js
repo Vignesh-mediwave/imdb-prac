@@ -1,16 +1,16 @@
-const movielist = [
-  {
-    id: 1641812427483,
-    name: "Ironman",
-    year: 2008,
-    rating: "4",
-    genre: "Fantasy, Super hero",
-    image: {
-      url: "https://m.media-amazon.com/images/I/517EnJmL7+L.jpg",
-      altInfo: "Ironman DVD cover",
-    },
-  },
-];
+// const movielist = [
+//   {
+//     id: 1641812427483,
+//     name: "Ironman",
+//     year: 2008,
+//     rating: "4",
+//     genre: "Fantasy, Super hero",
+//     image: {
+//       url: "https://m.media-amazon.com/images/I/517EnJmL7+L.jpg",
+//       altInfo: "Ironman DVD cover",
+//     },
+//   },
+// ];
 
 function makeMovieListHTML(movies) {
   const listDiv = document.querySelector("#movie-list");
@@ -48,10 +48,27 @@ function makeMovieListHTML(movies) {
     pRating.textContent = movie.rating;
     div.appendChild(pRating);
 
-    const pGenre = document.querySelector("p");
+    const pGenre = document.createElement("p");
     pGenre.textContent = movie.genre;
     div.appendChild(pGenre);
 
     listDiv.appendChild(div);
   }
 }
+
+function addloading() {
+  const listDiv = document.querySelector("#movie-list");
+  listDiv.innerHTML = "please wait...";
+}
+
+function getMoviesFromApi() {
+  addloading();
+  fetch("http://localhost:1337/api/movies")
+    .then(function (result) {
+      return result.json();
+    })
+    .then(function (data) {
+      makeMovieListHTML(data);
+    });
+}
+getMoviesFromApi();
