@@ -71,6 +71,22 @@ function getMoviesFromApi() {
       makeMovieListHTML(data);
     });
 }
+function createMovieInApi(movie) {
+  fetch("http://localhost:1337/api/movies", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(movie),
+  })
+    .then(function (result) {
+      return result.json();
+    })
+    .then(function (data) {
+      console.log("API Success");
+      console.log("data");
+    });
+}
 
 function hookbuttons() {
   const addbtn = document.querySelector("#add-movies-btn");
@@ -89,10 +105,25 @@ function hookbuttons() {
   });
 }
 function hookAddMovieForm() {
+  console.log("hookAddMovieForm()");
   const form = document.querySelector("#add-movie-form");
-  form.addEventListener("summit", function (event) {
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
+    const formdata = new FormData(form);
+    const movie = {
+      name: formdata.get("movie-name"),
+      year: formdata.get("movie-year"),
+      rating: formdata.get("movie-rating"),
+      genre: formdata.get("movie-genre"),
+      image: {
+        url: formdata.get("movie-image-url"),
+        altInfo: formdata.get("movie-image-alt"),
+      },
+    };
+    console.log(movie);
+    createMovieInApi(movie);
   });
 }
 getMoviesFromApi();
 hookbuttons();
+hookAddMovieForm();

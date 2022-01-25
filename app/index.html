@@ -16,11 +16,11 @@
         <form id="add-movie-form">
           <div>
             <label for="movie-name">Name</label>
-            <input type="text" id="movie-name" />
+            <input type="text" name="movie-name" id="movie-name" />
           </div>
           <div>
             <label for="movie-year">Year</label>
-            <input type="number" id="movie-year" />
+            <input type="number" name="movie-year" id="movie-year" />
           </div>
           <div>
             <label for="movie-rating">Name</label>
@@ -34,24 +34,32 @@
           </div>
           <div>
             <label for="movie-genre">Genre</label>
-            <input type="text" id="movie-genre" />
+            <input type="text" name="movie-genre" id="movie-genre" />
           </div>
           <div>
             <div>
               <h3>Image</h3>
               <div>
                 <label for="movie-image-url">Image url</label>
-                <input type="text" id="movie-image-url" />
+                <input
+                  type="text"
+                  name="movie-image-url"
+                  id="movie-image-url"
+                />
               </div>
               <div>
                 <div>
                   <label for="movie-image-alt">Image alt</label>
-                  <input type="text" id="movie-image-alt" />
+                  <input
+                    type="text"
+                    name="movie-image-alt"
+                    id="movie-image-alt"
+                  />
                 </div>
               </div>
             </div>
             <div>
-              <input type="summit" value="Add new movie" />
+              <input type="submit" value="Add new movie" />
             </div>
           </div>
         </form>
