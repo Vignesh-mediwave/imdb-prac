@@ -15,3 +15,6 @@ body {
   border-radius: 5px;
   padding: 5px;
 }
+.d-none {
+  display: none;
+}

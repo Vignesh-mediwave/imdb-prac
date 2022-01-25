@@ -71,4 +71,28 @@ function getMoviesFromApi() {
       makeMovieListHTML(data);
     });
 }
+
+function hookbuttons() {
+  const addbtn = document.querySelector("#add-movies-btn");
+  addbtn.addEventListener("click", function () {
+    const el1 = document.querySelector("#all-movies");
+    el1.classList.add("d-none");
+    const el2 = document.querySelector("#add-movies");
+    el2.classList.remove("d-none");
+  });
+  const showbtn = document.querySelector("#show-movies-btn");
+  showbtn.addEventListener("click", function () {
+    const el1 = document.querySelector("#all-movies");
+    el1.classList.remove("d-none");
+    const el2 = document.querySelector("#add-movies");
+    el2.classList.add("d-none");
+  });
+}
+function hookAddMovieForm() {
+  const form = document.querySelector("#add-movie-form");
+  form.addEventListener("summit", function (event) {
+    event.preventDefault();
+  });
+}
 getMoviesFromApi();
+hookbuttons();
